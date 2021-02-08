@@ -1,7 +1,8 @@
 galaxy_info:
   author: baztian
+  role_name: other_installs
   description: Role for installing various useful packages via apt
-  license: GPLv3
+  license: MIT
   min_ansible_version: 2.0
   platforms:
   - name: Ubuntu
