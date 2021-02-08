@@ -82,9 +82,10 @@
   tags: signal
 - name: Add Spotify signing key on remote server to keyring
   apt_key:
-    data: "{{ lookup('file', 'spotify.gpg') }}"
-    id: 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45
-    state: present
+    # Id found via
+    # https://keyserver.ubuntu.com/pks/lookup?search=Spotify+Public+Repository+Signing+Key&fingerprint=on&op=index
+    id: 8fd3d9a8d3800305a9fff259d1742ad60d811d58
+    keyserver: keyserver.ubuntu.com
   tags: spotify
 - name: Add apt repo for Spotify
   apt_repository:
