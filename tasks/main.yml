@@ -23,6 +23,10 @@
         - remmina-plugin-vnc
       default_release: "{{ 'stretch-backports' if not stretch_backports.skipped is defined else None }}"
     tags: ansible_lint
+- name: Install xz-utils as a prerequisit to install zoom
+  apt:
+    pkg: xz-utils
+  tags: zoom_us
 - name: Install zoom.us
   # https://support.zoom.us/hc/en-us/articles/205759689-New-Updates-for-Linux
   apt:
