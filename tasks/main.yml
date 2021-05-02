@@ -1,9 +1,28 @@
 ---
 - name: Update apt cache.
   apt: update_cache=yes cache_valid_time=3600
+- name: Add contrib so that ttf-mscorefonts-installer is available
+  apt_repository:
+    repo: deb http://deb.debian.org/debian {{ ansible_distribution_release }} contrib non-free
+  when: ansible_distribution == "Debian"
 - name: Install various packages
   apt:
     pkg: "{{ various_apt_packages }}"
+- name: Install remmina
+  block:
+  - name: Add stretch-backports so that remmina is available
+    apt_repository:
+      repo: deb http://deb.debian.org/debian stretch-backports main
+    when: ansible_distribution == "Debian" and ansible_distribution_major_version == "9"
+    register: stretch_backports
+  - name: Install remmina via package manager
+    apt:
+      pkg:
+        - remmina
+        - remmina-plugin-rdp
+        - remmina-plugin-vnc
+      default_release: "{{ 'stretch-backports' if not stretch_backports.skipped is defined else None }}"
+    tags: ansible_lint
 - name: Install zoom.us
   # https://support.zoom.us/hc/en-us/articles/205759689-New-Updates-for-Linux
   apt:
