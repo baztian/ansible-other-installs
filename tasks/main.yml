@@ -9,20 +9,12 @@
   apt:
     pkg: "{{ various_apt_packages }}"
 - name: Install remmina
-  block:
-  - name: Add stretch-backports so that remmina is available
-    apt_repository:
-      repo: deb http://deb.debian.org/debian stretch-backports main
-    when: ansible_distribution == "Debian" and ansible_distribution_major_version == "9"
-    register: stretch_backports
-  - name: Install remmina via package manager
-    apt:
-      pkg:
-        - remmina
-        - remmina-plugin-rdp
-        - remmina-plugin-vnc
-      default_release: "{{ 'stretch-backports' if not stretch_backports.skipped is defined else None }}"
-    tags: ansible_lint
+  apt:
+    pkg:
+      - remmina
+      - remmina-plugin-rdp
+      - remmina-plugin-vnc
+  tags: remmina
 - name: Install xz-utils as a prerequisit to install zoom
   apt:
     pkg: xz-utils
