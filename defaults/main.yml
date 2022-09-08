@@ -3,5 +3,7 @@ various_apt_packages:
 - htop
 - ttf-mscorefonts-installer
 - fonts-cmu
+teams_for_linux_version: 1.0.33
+teams_for_linux_sha1: b7619c12282e236b0dc105b17124163fd5a33133
 zoom_version: latest
 zoom_deb_url: "https://zoom.us/client/{{ zoom_version }}/zoom_amd64.deb"
