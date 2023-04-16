@@ -29,23 +29,6 @@
     pkg:
       - dirmngr
       - apt-transport-https
-- name: Add Microsoft apt signing key on remote server to keyring
-  apt_key:
-    id: BC528686B50D79E339D3721CEB3E94ADBE1229CF
-    keyserver: keyserver.ubuntu.com
-  tags: ms_teams
-- name: Add apt repo for ms teams
-  apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main
-    # setting filename required to not collide with the one provided by the deb similar to
-    # https://github.com/microsoft/vscode/blob/master/resources/linux/debian/postinst.template
-    filename: teams
-    state: present
-  tags: ms_teams
-- name: Install Microsoft Teams client
-  apt:
-    pkg: teams
-  tags: ms_teams
 - name: Gather installed packages
   package_facts:
   tags: teams_for_linux
