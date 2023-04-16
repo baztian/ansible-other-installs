@@ -1,6 +1,8 @@
 ---
 - name: Update apt cache.
-  apt: update_cache=yes cache_valid_time=3600
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
 - name: Add contrib so that ttf-mscorefonts-installer is available
   apt_repository:
     repo: deb http://deb.debian.org/debian {{ ansible_distribution_release }} contrib non-free
