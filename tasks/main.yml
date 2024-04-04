@@ -31,6 +31,12 @@
     pkg:
       - dirmngr
       - apt-transport-https
+- name: Install update-github-deb.sh
+  get_url:
+    url: '{{ update_github_deb_url }}'
+    dest: /usr/local/bin/update-github-deb.sh
+    mode: 0755
+    force: yes
 - name: Gather installed packages
   package_facts:
   tags: teams_for_linux
