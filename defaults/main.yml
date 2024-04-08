@@ -4,7 +4,7 @@ various_apt_packages:
 - ttf-mscorefonts-installer
 - fonts-cmu
 update_github_deb_url: https://gist.githubusercontent.com/baztian/34141856aaa7f7ca95f6b045b7897d9f/raw/update-github-deb.sh
-teams_for_linux_version: 1.4.17
-teams_for_linux_sha1: a18848b6a3e5b731477d98027cab44f2d3331cef
+teams_for_linux_version: 1.4.18
+teams_for_linux_sha1: e625c1d4313134cc59b01c21a9dc63f1e8f3e388
 zoom_version: latest
 zoom_deb_url: "https://zoom.us/client/{{ zoom_version }}/zoom_amd64.deb"
